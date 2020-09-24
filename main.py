@@ -3,19 +3,41 @@ import base64
 
 from flask import Flask, render_template, request, redirect, url_for, session
 
-from model import Donation 
+from model import Donation, Donor
+
+from peewee import *
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
     return redirect(url_for('all'))
 
-@app.route('/donations/')
+
+@app.route('/donations')
 def all():
     donations = Donation.select()
     return render_template('donations.jinja2', donations=donations)
-    
+
+
+@app.route('/create', methods=['GET', 'POST'])
+def create():
+    if request.method == 'POST':
+
+        name = request.form.get('name')
+        amount = request.form.get('amount')
+
+        try:
+            donor = Donor.get(name=name)
+        except DoesNotExist:
+            donor = Donor.create(name=name)
+        Donation.create(donor=donor, value=amount)
+
+        return redirect(url_for('all'))
+
+    return render_template('create.jinja2')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6738))
