@@ -4,8 +4,18 @@
 </head>
 <body>
     <nav>
+        <div>
         <a id="home" href="{{ url_for('all') }}">Homepage</a>
+        </div>
+        <div>
+        <a id="login" href="{{ url_for('login') }}">Login</a>
+        </div>
+        <div>
         <a id="create" href="{{ url_for('create') }}">Create New Donation</a>
+        </div>
+        <div>
+        <a id="view" href="{{ url_for('view') }}">View Donations</a>
+        </div>
     </nav>
 	<h1>Donations</h1>
 	<h2>{% block subtitle %} {% endblock subtitle %}</h2>

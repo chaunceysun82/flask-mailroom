@@ -20,3 +20,10 @@ class Donation(Model):
     class Meta:
         database = db
 
+
+class Admin(Model):
+    user = CharField(max_length=255, primary_key=True, unique=True)
+    password = CharField(max_length=255)
+
+    class Meta:
+        database = db
