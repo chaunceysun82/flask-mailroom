@@ -1,5 +1,4 @@
 import os
-import base64
 
 from flask import Flask, render_template, request, redirect, url_for, session
 
@@ -10,7 +9,8 @@ from peewee import DoesNotExist
 from passlib.hash import pbkdf2_sha256
 
 app = Flask(__name__)
-app.secret_key = b"\xe0,C\xce\xc3\xab\xe7Q\xf0\xe9H]\x8a\x14s'W\x1d\xa4\xb0\xeaS\xd8\x1b"
+# app.secret_key = b"\xe0,C\xce\xc3\xab\xe7Q\xf0\xe9H]\x8a\x14s'W\x1d\xa4\xb0\xeaS\xd8\x1b"
+app.secret_key = os.environ.get('SECRET_KEY').encode()
 
 
 @app.route('/')
@@ -24,7 +24,7 @@ def all():
     return render_template('donations.jinja2', donations=donations)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', metqqhods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         try:
