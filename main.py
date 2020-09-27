@@ -24,7 +24,7 @@ def all():
     return render_template('donations.jinja2', donations=donations)
 
 
-@app.route('/login', metqqhods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         try:
