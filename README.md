@@ -1,6 +1,6 @@
 # Flask Mailroom Application
 
-Running at (https://http://stormy-savannah-38160.herokuapp.com/donations/).
+Running at (https://stormy-savannah-38160.herokuapp.com/).
 
 ## Your Task
 
