@@ -4,7 +4,7 @@ from passlib.hash import pbkdf2_sha256
 from model import db, Donor, Donation, Admin
 
 db.connect()
-db.execute_sql('PRAGMA foreign_keys = ON;')
+# db.execute_sql('PRAGMA foreign_keys = ON;')
 
 # This line will allow you "upgrade" an existing database by
 # dropping all existing tables from it.
